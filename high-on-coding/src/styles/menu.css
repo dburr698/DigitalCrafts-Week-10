@@ -1,0 +1,18 @@
+.menu {
+    background-color: #52a7f9;
+    display: flex;
+}
+
+.link {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    
+}
+
+.title{
+    color: white;
+    padding: 10px
+}
