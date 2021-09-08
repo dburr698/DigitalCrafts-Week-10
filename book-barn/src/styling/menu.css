@@ -1,0 +1,17 @@
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lightgrey;
+}
+
+.logo {
+    background-color: coral;
+    padding: 20px;
+    border-radius: 20px;
+    
+}
+
+.link {
+    color: coral;
+}
