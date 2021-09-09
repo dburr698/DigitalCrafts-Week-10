@@ -1,0 +1,12 @@
+.movieUL {
+    list-style: none;
+    display: flex;
+}
+
+.poster {
+    width: 200px;
+}
+
+.movieLI {
+    margin: 10px;
+}
