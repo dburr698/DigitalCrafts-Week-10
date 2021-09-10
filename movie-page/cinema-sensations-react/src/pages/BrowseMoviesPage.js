@@ -1,5 +1,5 @@
 import { Component } from "react"
-import MovieList from "./MovieList"
+import MovieList from "../components/MovieList"
 
 
 class BrowseMovies extends Component {

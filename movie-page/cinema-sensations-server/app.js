@@ -3,6 +3,12 @@ const app = express()
 
 const cors = require('cors')
 
+const bcrypt = require('bcryptjs')
+
+const models = require('./models')
+
+const salt = 10
+
 app.use(cors())
 app.use(express.json())
 
@@ -30,6 +36,41 @@ app.post('/api/movies', (req, res) => {
 
 })
 
+app.post('/api/register', async (req, res) => {
+
+    const username = req.body.username
+    const password = req.body.password
+    const firstName = req.body.firstName
+    const lastName = req.body.lastName
+
+    const persistedUser = await models.User.findOne({
+        where: {
+            username: username
+        }
+    })
+
+    if(persistedUser == null) {
+        bcrypt.hash(password, salt, async (error, hash) => {
+            if(error){
+                res.json({message: "Error occured when creating a user."})
+            } else {
+                const user = models.User.build({
+                    username: username,
+                    password: hash,
+                    first_name: firstName,
+                    last_name: lastName
+                })
+
+                let savedUser = await user.save()
+                if(savedUser != null) {
+                    res.json({success: true})
+                }
+            }
+        })
+    } else {
+        res.json({message: "User already exists."})
+    }
+})
 
 app.listen(8080, () => {
     console.log('Server is running... you better go catch it')
